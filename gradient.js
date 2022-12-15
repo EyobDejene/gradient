@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
             }
 
-            setSize(e = 640, t = 480) {
+            setSize(e = window.innerWidth, t = window.innerHeight) {
                 this.width = e, this.height = t, this.canvas.width = e, this.canvas.height = t, this.gl.viewport(0, 0, e, t), this.commonUniforms.resolution.value = [e, t], this.commonUniforms.aspectRatio.value = e / t, this.debug("MiniGL.setSize", {
                     width: e,
                     height: t
@@ -534,7 +534,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     "--gradient-color-6",
                     "--gradient-color-7",
                     "--gradient-color-8",
-                    ].map(cssPropertyName => {
+                ].map(cssPropertyName => {
                     let hex = this.computedCanvasStyle.getPropertyValue(cssPropertyName).trim();
                     //Check if shorthand hex value was used and double the length so the conversion in normalizeColor will work.
                     if (4 === hex.length) {

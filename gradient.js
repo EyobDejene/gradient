@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 });
                             }
 
-                            setSize(width = window.innerWidth, height = window.innerHeight, orientation = "xz") {
+                            setSize(width = 1, height = 1, orientation = "xz") {
                                 const geometry = this;
                                 geometry.width = width,
                                     geometry.height = height,
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
             }
 
-            setSize(e = window.innerWidth, t = window.innerHeight) {
+            setSize(e = 640, t = 480) {
                 this.width = e, this.height = t, this.canvas.width = e, this.canvas.height = t, this.gl.viewport(0, 0, e, t), this.commonUniforms.resolution.value = [e, t], this.commonUniforms.aspectRatio.value = e / t, this.debug("MiniGL.setSize", {
                     width: e,
                     height: t
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     this.isMouseDown = !1;
                 }), e(this, "animate", e => {
                     if (!this.shouldSkipFrame(e) || this.isMouseDown) {
-                        if (this.t += Math.min(e - this.last, 1e3 / 0.11), this.last = e, this.isMouseDown) {
+                        if (this.t += Math.min(e - this.last, 1e3 / 15), this.last = e, this.isMouseDown) {
                             let e = 160;
                             this.isMetaKey && (e = -160), this.t += e;
                         }
@@ -351,8 +351,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     this.conf = {
                         presetName: "",
                         wireframe: false,
-                        density: [.06, .60],
-                        zoom: 0,
+                        density: [.06, .16],
+                        zoom: 1,
                         rotation: 0,
                         playing: true
                     },
@@ -412,23 +412,23 @@ document.addEventListener("DOMContentLoaded", function() {
                                 value: Math.sin(this.angle) / Math.cos(this.angle)
                             }),
                             offsetTop: new this.minigl.Uniform({
-                                value: -100
+                                value: -.5
                             }),
                             offsetBottom: new this.minigl.Uniform({
-                                value: -1
+                                value: -.5
                             }),
                             noiseFreq: new this.minigl.Uniform({
-                                value: [1, 1],
+                                value: [3, 4],
                                 type: "vec2"
                             }),
                             noiseAmp: new this.minigl.Uniform({
                                 value: this.amp
                             }),
                             noiseSpeed: new this.minigl.Uniform({
-                                value: 1
+                                value: 10
                             }),
                             noiseFlow: new this.minigl.Uniform({
-                                value: 0
+                                value: 3
                             }),
                             noiseSeed: new this.minigl.Uniform({
                                 value: this.seed
@@ -550,7 +550,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const gradient = new Gradient();
         // Call `initGradient` with the selector to your canvas
-        //console.log(gradient);
+        console.log(gradient);
         gradient.initGradient('#gradient-canvas')
 
 

@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 });
                             }
 
-                            setSize(width = 1, height = 1, orientation = "xz") {
+                            setSize(width = window.innerWidth, height = window.innerHeight, orientation = "xz") {
                                 const geometry = this;
                                 geometry.width = width,
                                     geometry.height = height,
@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         presetName: "",
                         wireframe: false,
                         density: [.06, .60],
-                        zoom: 1,
+                        zoom: 0,
                         rotation: 0,
                         playing: true
                     },
